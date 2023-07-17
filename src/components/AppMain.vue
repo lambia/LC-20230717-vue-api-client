@@ -15,7 +15,8 @@ export default {
         }
     },
     methods: {
-        getPosts() {
+        getPostsFirstPage() {
+
             this.loading = true;
             axios.get(this.apiUrl + "posts").then(response => {
                 console.log(response.data);
@@ -28,46 +29,18 @@ export default {
                 this.loading = false;
                 this.loadingError = err.message;
             });
-        },
-        getPostsNextPage() {
 
-            if (this.postsCurrentPage < this.postsTotalPages) {
-
-                let config = {
-                    params: {
-                        page: (this.postsCurrentPage + 1)
-                    }
-                };
-                
-                this.loading = true;
-                axios.get(this.apiUrl + "posts", config).then(response => {
-                    console.log(response.data);
-                    // this.posts = response.data.results; //non paginato
-                    this.posts = response.data.results.data; //paginato
-                    this.postsCurrentPage = response.data.results.current_page;
-                    this.postsTotalPages = response.data.results.last_page;
-                    this.loading = false;
-                }).catch(err => {
-                    this.loading = false;
-                    this.loadingError = err.message;
-                });
-
-            } else {
-
-                console.error("Non ci sono più pagine");
-
-            }
         },
         getPostsPage(pageNumber) {
 
-            if (pageNumber <= this.postsTotalPages) {
+            if(pageNumber && pageNumber > 0 && pageNumber <= this.postsTotalPages) {
 
                 let config = {
                     params: {
                         page: pageNumber
                     }
                 };
-                
+
                 this.loading = true;
                 axios.get(this.apiUrl + "posts", config).then(response => {
                     console.log(response.data);
@@ -82,14 +55,21 @@ export default {
                 });
 
             } else {
-
                 console.error("Non ci sono più pagine");
-
             }
-        }
+
+        },
+        getPostsPrevPage() {
+
+            this.getPostsPage( this.postsCurrentPage - 1 );
+        },
+        getPostsNextPage() {
+
+            this.getPostsPage( this.postsCurrentPage + 1 );
+        },
     },
     mounted() {
-        this.getPosts();
+        this.getPostsFirstPage();
     }
 }
 </script>
@@ -111,8 +91,9 @@ export default {
             <p>{{ post.content }}</p>
         </div>
 
+        <a class="button" @click="getPostsPrevPage">Pagina precedente</a>
         <a class="button" @click="getPostsPage(pageNumber)" v-for="pageNumber in postsTotalPages">{{ pageNumber }}</a>
-        <a class="button" @click="getPostsNextPage">Carica pagina successiva</a>
+        <a class="button" @click="getPostsNextPage">Pagina successiva</a>
     </main>
 
 </template>
