@@ -1,0 +1,16 @@
+body {
+  background: #222;
+  color: white;
+  font-family: sans-serif;
+  padding: 1rem;
+}
+
+a {
+  color: aquamarine;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
