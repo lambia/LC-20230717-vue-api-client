@@ -1,24 +1,28 @@
 <script>
-import AppMain from './components/AppMain.vue'
-
 export default {
   name: "Vue API Client",
   data() {
     return { }
-  },  
-  components: {
-    AppMain
   }
 }
 </script>
 
 <template>
-  <div>
-    <h1>Benvenuto in Vue</h1>
-    <AppMain />
-  </div>
+  
+  <header>
+    <a href="/">Home</a>
+    <a href="/about-us">About us</a>
+    <a href="/posts">Post</a>
+  </header>
+
+  <router-view></router-view>
+
 </template>
 
 <style scoped>
-
+header {
+  width: 100%;
+  background: white;
+  color: black;
+}
 </style>
