@@ -9,7 +9,7 @@ export default {
             { label: "Posts", name: "posts" },
             // { label: "Testa pagina di errore", name: "error", params: { code: 404 } },
             // { label: "Articolo a caso", name: "single-post", params: { id: 3 } }
-        ]
+          ]
         }
     }
 }
