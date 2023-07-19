@@ -1,11 +1,12 @@
 <script>
 import axios from "axios";
+import { store } from '../store';
 
 export default {
     name: "SinglePost",
     data() {
         return {
-            apiUrl: "http://localhost:8000/api/",
+            store,
             loading: false,
             loadingError: false,
             post: null
@@ -15,7 +16,7 @@ export default {
         getPost(id) {
 
             this.loading = true;
-            axios.get(this.apiUrl + "posts/" + id).then(response => {
+            axios.get(this.store.apiUrl + "posts/" + id).then(response => {
                 console.log(response.data);
                 this.post = response.data.results;
                 this.loading = false;

@@ -1,11 +1,12 @@
 <script>
 import axios from "axios";
+import { store } from '../store';
 
 export default {
     name: "PostList",
     data() {
         return {
-            apiUrl: "http://localhost:8000/api/",
+            store,
             loading: false,
             loadingError: false,
             posts: [],
@@ -17,7 +18,7 @@ export default {
         getPostsFirstPage() {
 
             this.loading = true;
-            axios.get(this.apiUrl + "posts").then(response => {
+            axios.get(this.store.apiUrl + "posts").then(response => {
                 console.log(response.data);
                 // this.posts = response.data.results; //non paginato
                 this.posts = response.data.results.data; //paginato
@@ -42,7 +43,7 @@ export default {
                 };
 
                 this.loading = true;
-                axios.get(this.apiUrl + "posts", config).then(response => {
+                axios.get(this.store.apiUrl + "posts", config).then(response => {
                     console.log(response.data);
                     // this.posts = response.data.results; //non paginato
                     this.posts = response.data.results.data; //paginato
