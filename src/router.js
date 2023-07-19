@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
 import PostList from './pages/PostList.vue';
+import ErrorPage from './pages/ErrorPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -21,6 +22,11 @@ const router = createRouter({
             path: "/posts",
             name: "posts",
             component: PostList
+        },
+        {
+            path: "/error/:code",
+            name: "error",
+            component: ErrorPage
         }
     ]
 });
