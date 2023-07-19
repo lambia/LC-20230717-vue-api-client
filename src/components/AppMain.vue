@@ -82,7 +82,9 @@ export default {
         <h3 v-if="loadingError">{{ loadingError }}</h3>
 
         <div class="card" v-for="post in posts">
-            <h3>{{ post.title }}</h3>
+            <h3>
+                <router-link :to="{ name:'single-post', params: {id: post.id} }">{{ post.title }}</router-link>
+            </h3>
             <h4>Categoria: {{ post.category ? post.category.name : "Nessuna" }}</h4>
             <h4>Tags: 
                 <span v-if="post.tags.length" v-for="tag in post.tags">{{ tag.name }}&nbsp;</span>

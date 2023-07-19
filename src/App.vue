@@ -7,14 +7,9 @@ export default {
         { label: "Home", name: "home" },
         { label: "About us", name: "about"  },
         { label: "Posts", name: "posts" },
-        { label: "Testa pagina di errore", name: "error", params: { code: "404" } }
-      ],
-      // navLinks: [
-      //   { label: "Home", to: { name: "home" } },
-      //   { label: "About us", to: { name: "about" } },
-      //   { label: "Posts", to: { name: "posts"} },
-      //   { label: "Testa pagina di errore", to: { name: "error", params: { code: "404" } } }
-      // ]
+        // { label: "Testa pagina di errore", name: "error", params: { code: 404 } },
+        // { label: "Articolo a caso", name: "single-post", params: { id: 3 } }
+      ]
     }
   }
 }
@@ -26,10 +21,6 @@ export default {
     <template v-for="i in navLinks">
       <router-link :to="{ name: i.name, params: i.params }">{{ i.label }}</router-link>
     </template>
-<!-- 
-    <template v-for="i in navLinks">
-      <router-link :to="i.to">{{ i.label }}</router-link>
-    </template> -->
   </header>
 
   <router-view></router-view>
