@@ -5,7 +5,6 @@ export default {
     name: "AppMain",
     data() {
         return {
-            chiave: "valore",
             apiUrl: "http://localhost:8000/api/",
             loading: false,
             loadingError: false,
