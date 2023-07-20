@@ -30,6 +30,11 @@ export default {
     },
     mounted() {
         this.getPost( this.$route.params.id );
+    },
+    beforeRouteUpdate (to, from) {
+        if(from.name == to.name) {
+            this.getPost( to.params.id );
+        }
     }
 }
 </script>
