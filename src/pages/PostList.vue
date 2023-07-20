@@ -86,6 +86,7 @@ export default {
             <h3 v-if="loadingError">{{ loadingError }}</h3>
 
             <div class="card" v-for="post in posts">
+                <img :src="store.storageUrl + post.image" />
                 <h3>
                     <router-link :to="{ name:'single-post', params: {id: post.id} }">{{ post.title }}</router-link>
                 </h3>
@@ -123,5 +124,9 @@ export default {
     border-radius: 0.25rem;
     margin: 1rem;
     cursor: pointer;
+}
+
+.card > img {
+    width: 100%;
 }
 </style>
