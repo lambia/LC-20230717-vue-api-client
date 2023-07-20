@@ -29,6 +29,9 @@ export default {
                 this.loading = false;
                 this.loadingError = err.message;
                 this.$router.push({ name: 'error', params: { code: 404 } })
+                // per passare "params artificiali":
+                // Message via history
+                // this.$router.push({ name: 'error', params: { code: err.response.status }, state: { message: err.message } })
             });
 
         },
