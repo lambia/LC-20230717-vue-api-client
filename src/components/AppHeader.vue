@@ -1,9 +1,12 @@
 <script>
+import { store } from "../store.js";
+
 export default {
     name: "AppHeader",
     data() {
         return {
-        navLinks: [
+          store,
+          navLinks: [
             { label: "Home", name: "home" },
             { label: "About us", name: "about"  },
             { label: "Posts", name: "posts" },
@@ -21,6 +24,7 @@ export default {
       <router-link :to="{ name: i.name, params: i.params }">{{ i.label }}</router-link>
       <!-- <router-link :to="i">{{ i.label }}</router-link> -->
     </template>
+    <span>Questo sito contiene {{ store.totalPostsNumber }} posts</span>
   </header>
 </template>
 

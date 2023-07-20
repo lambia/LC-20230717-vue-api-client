@@ -44,6 +44,12 @@ export default {
     <section v-if="post">
         <img :src="store.storageUrl + post.image" />
         <h1>{{ post.title }}</h1>
+        <template v-if="post.id > 1">
+            <router-link :to="{ name:'single-post', params: {id: post.id-1} }" class="navLink">Articolo precedente</router-link>
+        </template>
+        <template v-if="post.id < store.totalPostsNumber">
+            <router-link :to="{ name:'single-post', params: {id: post.id+1} }" class="navLink">Prossimo articolo</router-link>
+        </template>
         <h2>Categoria: {{ post.category ? post.category.name : "Nessuna" }}</h2>
         <h2>Tags: 
             <span v-if="post.tags.length" v-for="tag in post.tags">{{ tag.name }}&nbsp;</span>
