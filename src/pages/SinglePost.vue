@@ -42,6 +42,7 @@ export default {
 <template>
 
     <section v-if="post">
+        <img :src="store.storageUrl + post.image" />
         <h1>{{ post.title }}</h1>
         <h2>Categoria: {{ post.category ? post.category.name : "Nessuna" }}</h2>
         <h2>Tags: 
@@ -50,5 +51,17 @@ export default {
         </h2>
         <p>{{ post.content }}</p>
     </section>
+    <section v-else>
+        <h1>Il post non è stato trovato</h1>
+    </section>
 
 </template>
+
+<style scoped>
+img {
+    width: 100%;
+}
+a.navLink {
+    padding: 1rem;
+}
+</style>
